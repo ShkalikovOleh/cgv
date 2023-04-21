@@ -68,7 +68,7 @@ namespace cgv {
 		{
 			neighbor_tree = make_shared<ann_tree>();
 			neighbor_tree->build(*target_cloud);
-			
+
 		}
 
 
@@ -123,7 +123,7 @@ namespace cgv {
 			icp_obj.eps = mse_threshhold / 1000.0;
 			icp_obj.maxIterations = max_icp_iterations;
 			icp_obj.set_num_random(0);
-			
+
 			// initial rotation and translation
 			optimal_rot_node = init_rot_node;
 			optimal_trans_node = init_trans_node;

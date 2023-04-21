@@ -10,9 +10,9 @@
 namespace cgv {
 namespace pointcloud {
 namespace file_parser {
-	
-enum class e57_error_code { 
-	FILE_TO_SMALL, 
+
+enum class e57_error_code {
+	FILE_TO_SMALL,
 	XML_ERROR,
 	BAD_CHECKSUM,
 	XML_STRUCTURE_ERROR,
@@ -60,7 +60,7 @@ class e57_data_set
 	e57_file_header header;
 
 public:
-	void read(const std::string& file_name); 
+	void read(const std::string& file_name);
 
 	e57_file_header read_header(const char* data, const size_t data_length);
 };
@@ -148,7 +148,7 @@ struct data_packet_header
 	uint8_t packet_flags;
 	uint16_t packet_logical_length; //real logical length-1
 	uint16_t bytestream_count;
-	
+
 	void read_from(void* data, size_t data_length) {
 		if (data_length < sizeof(4))
 		packet_type = *((uint8_t*)data);
@@ -204,7 +204,7 @@ struct data_channel
 
 	template<typename T>
 	std::vector<T>& as_vector() {
-		if (!check_type()) //dynamic type check
+		if (!check_type<T>()) //dynamic type check
 			throw e57_parsing_error(e57_error_code::TYPE_MISMATCH_ERROR);
 		return static_cast<std::vector<T>*>(vector_ptr);
 	}

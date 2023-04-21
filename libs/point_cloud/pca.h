@@ -21,7 +21,7 @@ namespace cgv {
 			const matrix_t* A;
 			// output data
 			mat3 covariance_matrix;
-			
+
 			std::array<vec3,3> eigen_vector_data;
 			std::array<Real,3> eigen_value_data;
 			vec3 mean_point;
@@ -74,7 +74,7 @@ namespace cgv {
 
 				{
 					const vec3* input = input_pnts;
-					std::vector<vec3>::iterator it = centered_pnts.begin();
+					auto it = centered_pnts.begin();
 					while (it < centered_pnts.end()) {
 						*it =  *input - mean;
 						++input; ++it;
@@ -89,11 +89,11 @@ namespace cgv {
 				// compute the covariance matrix
 				for (int i = 0; i < size; ++i) {
 					//build covariance matrice out of the sum of outer products
-					covariance_matrix += mat3(centered_pnts[i], centered_pnts[i]); 
+					covariance_matrix += mat3(centered_pnts[i], centered_pnts[i]);
 				}
 				covariance_matrix = covariance_matrix/ (Real)size;
 
-				// do singular value decomposition 
+				// do singular value decomposition
 				matrix_t A = matrix_t(3, 3, covariance_matrix.begin());
 				cgv::math::svd(A, U, sigma, V, ordering);
 				// columns of U contain vectors spanning the eigenspace and sigma contains the eigen values

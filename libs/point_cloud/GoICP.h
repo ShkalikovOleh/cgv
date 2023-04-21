@@ -13,6 +13,7 @@ WIP
 #include "3ddt.h"
 #include "ICP.h"
 #include "ann_tree.h"
+#include <queue>
 
 
 #include "lib_begin.h"
@@ -53,7 +54,7 @@ namespace cgv {
 			typedef cgv::math::fmat<float, 4, 4> mat4;
 			typedef cgv::math::fmat<float, 3, 3> mat3;
 		public:
-			/// supported methods for finding nearest neighbor correspondences outside icp. 
+			/// supported methods for finding nearest neighbor correspondences outside icp.
 			/// The used icp implementation currently only uses the ann_tree
 			enum DistanceComputationMode {
 				DCM_DISTANCE_TRANSFORM = 0, // faster for large pointclouds, setup takes more time
@@ -138,7 +139,7 @@ namespace cgv {
 		template<GoICP::DistanceComputationMode DCM>
 		inline float GoICP::innerBnB(float * max_rot_distance_list, translation_node * trans_node_out)
 		{
-			priority_queue<translation_node> tnodes;
+			std::priority_queue<translation_node> tnodes;
 
 			float opt_trans_err = optimal_error;
 
@@ -221,7 +222,7 @@ namespace cgv {
 			float lower_bound, upper_bound, error, dis;
 			rotation_node rot_node;
 			translation_node trans_node;
-			priority_queue<rotation_node> rotation_queue;
+			std::priority_queue<rotation_node> rotation_queue;
 			optimal_error = 0;
 
 			for (int i = 0; i < source_cloud->get_nr_points(); i++)
@@ -333,7 +334,7 @@ namespace cgv {
 							optimal_translation = t_icp;
 						}
 
-						priority_queue<rotation_node> new_rotation_queue;
+						std::priority_queue<rotation_node> new_rotation_queue;
 						while (!rotation_queue.empty())
 						{
 							rotation_node node = rotation_queue.top();

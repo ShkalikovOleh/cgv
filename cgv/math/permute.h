@@ -2,6 +2,8 @@
 
 #include <vector>
 
+using std::size_t;
+
 namespace cgv {
 	namespace math {
 
@@ -25,7 +27,7 @@ namespace cgv {
 				A[i] = v;
 			}
 		}
-		/// interface to permute function for arrays and permutations stored in vectors 
+		/// interface to permute function for arrays and permutations stored in vectors
 		template <typename T, typename I>
 		void permute_vector(std::vector<T>& V, std::vector<I>& P) {
 			permute_array(V.size(), &V.front(), &P.front());

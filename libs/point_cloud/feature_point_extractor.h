@@ -5,7 +5,8 @@
 #include "ann_tree.h"
 #include <random>
 #include <ctime>
-#include <cgv/math/svd.h> 
+#include <cgv/math/svd.h>
+#include <memory>
 #include "lib_begin.h"
 
 class CGV_API feature_points_extractor : public point_cloud_types {

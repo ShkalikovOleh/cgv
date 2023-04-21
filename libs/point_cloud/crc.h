@@ -2,6 +2,8 @@
 #include <array>
 #include <cstdint>
 
+using std::size_t;
+
 namespace cgv {
 namespace pointcloud {
 namespace file_parser {
