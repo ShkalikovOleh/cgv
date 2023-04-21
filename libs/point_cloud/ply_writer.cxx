@@ -1,14 +1,14 @@
 #include "ply_writer.h"
 
 template <typename T>
-struct PlyVertex 
+struct PlyVertex
 {
   T x,y,z;
   T nx,ny,nz;
   unsigned char red, green, blue, alpha;
 };
 
-struct PlyFace 
+struct PlyFace
 {
   unsigned char nverts;
   int *verts;
@@ -30,7 +30,7 @@ template <> struct ply_traits<double> { static const int type = Float64; };
 template <typename T>
 PlyProperty* construct_vertex_properties()
 {
-	static PlyProperty vertex_props[] = { 
+	static PlyProperty vertex_props[] = {
 		{"x", ply_traits<T>::type, ply_traits<T>::type, offsetof(PlyVertex<T>,x), 0, 0, 0, 0},
 		{"y", ply_traits<T>::type, ply_traits<T>::type, offsetof(PlyVertex<T>,y), 0, 0, 0, 0},
 		{"z", ply_traits<T>::type, ply_traits<T>::type, offsetof(PlyVertex<T>,z), 0, 0, 0, 0},
@@ -46,7 +46,7 @@ PlyProperty* construct_vertex_properties()
 }
 
 static PlyProperty face_props[] = { /* list of property information for a face */
-	{ "vertex_indices", Int32, Int32, offsetof(PlyFace,verts), 
+	{ "vertex_indices", Int32, Int32, offsetof(PlyFace,verts),
 	  1, Uint8, Uint8, offsetof(PlyFace,nverts) },
 };
 
@@ -74,8 +74,8 @@ int to_ply_format(PlyFileFormat format)
 }
 
 template <typename T>
-bool ply_writer<T>::open(const std::string& file_name, 
-								 unsigned int nr_vertices, unsigned int nr_faces, 
+bool ply_writer<T>::open(const std::string& file_name,
+								 unsigned int nr_vertices, unsigned int nr_faces,
 								 bool vertex_normals, bool vertex_colors, PlyFileFormat format)
 {
 	PlyFile* ply_out = open_ply_for_write(file_name.c_str(), 2, propNames, format);
@@ -178,7 +178,8 @@ void ply_writer<T>::close()
 	ply_file = 0;
 }
 
+
 #if (!defined _PLY_WRITER__MSC_TEMPLATES_DEFINED)
-	template<> class ply_writer<float>;
-	template<> class ply_writer<double>;
+	template class ply_writer<float>;
+	template class ply_writer<double>;
 #endif
