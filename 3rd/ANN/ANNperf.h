@@ -187,26 +187,26 @@ public :
 //				a counter, but used in stats computation.
 //----------------------------------------------------------------------
 
-extern int			ann_Ndata_pts;	// number of data points
-extern int			ann_Nvisit_lfs;	// number of leaf nodes visited
-extern int			ann_Nvisit_spl;	// number of splitting nodes visited
-extern int			ann_Nvisit_shr;	// number of shrinking nodes visited
-extern int			ann_Nvisit_pts;	// visited points for one query
-extern int			ann_Ncoord_hts;	// coordinate hits for one query
-extern int			ann_Nfloat_ops;	// floating ops for one query
-extern ANNsampStat	ann_visit_lfs;	// stats on leaf nodes visits
-extern ANNsampStat	ann_visit_spl;	// stats on splitting nodes visits
-extern ANNsampStat	ann_visit_shr;	// stats on shrinking nodes visits
-extern ANNsampStat	ann_visit_nds;	// stats on total nodes visits
-extern ANNsampStat	ann_visit_pts;	// stats on points visited
-extern ANNsampStat	ann_coord_hts;	// stats on coordinate hits
-extern ANNsampStat	ann_float_ops;	// stats on floating ops
+extern thread_local int			ann_Ndata_pts;	// number of data points
+extern thread_local int ann_Nvisit_lfs; // number of leaf nodes visited
+extern thread_local int ann_Nvisit_spl;			// number of splitting nodes visited
+extern thread_local int ann_Nvisit_shr; // number of shrinking nodes visited
+extern thread_local int ann_Nvisit_pts;			// visited points for one query
+extern thread_local int ann_Ncoord_hts; // coordinate hits for one query
+extern thread_local int ann_Nfloat_ops;			// floating ops for one query
+extern thread_local ANNsampStat ann_visit_lfs; // stats on leaf nodes visits
+extern thread_local ANNsampStat ann_visit_spl;	// stats on splitting nodes visits
+extern thread_local ANNsampStat ann_visit_shr; // stats on shrinking nodes visits
+extern thread_local ANNsampStat ann_visit_nds;	// stats on total nodes visits
+extern thread_local ANNsampStat ann_visit_pts; // stats on points visited
+extern thread_local ANNsampStat ann_coord_hts;	// stats on coordinate hits
+extern thread_local ANNsampStat ann_float_ops; // stats on floating ops
 //----------------------------------------------------------------------
 //  The following need to be part of the public interface, because
 //  they are accessed outside the DLL in ann_test.cpp.
 //----------------------------------------------------------------------
-DLL_API extern ANNsampStat ann_average_err;	// average error
-DLL_API extern ANNsampStat ann_rank_err;	// rank error
+DLL_API extern ANNsampStat ann_average_err; // average error
+DLL_API extern ANNsampStat ann_rank_err;	 // rank error
 
 //----------------------------------------------------------------------
 //	Declaration of externally accessible routines for statistics

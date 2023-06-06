@@ -38,12 +38,12 @@
 //		Appx_k_Near_Neigh().
 //----------------------------------------------------------------------
 
-extern double			ANNprEps;		// the error bound
-extern int				ANNprDim;		// dimension of space
-extern ANNpoint			ANNprQ;			// query point
-extern double			ANNprMaxErr;	// max tolerable squared error
-extern ANNpointArray	ANNprPts;		// the points
-extern ANNpr_queue		*ANNprBoxPQ;	// priority queue for boxes
-extern ANNmin_k			*ANNprPointMK;	// set of k closest points
+extern thread_local double ANNprEps;	// the error bound
+extern thread_local int ANNprDim;		// dimension of space
+extern thread_local ANNpoint ANNprQ;	// query point
+extern thread_local double ANNprMaxErr; // max tolerable squared error
+extern thread_local ANNpointArray ANNprPts; // the points
+extern thread_local ANNpr_queue* ANNprBoxPQ; // priority queue for boxes
+extern thread_local ANNmin_k* ANNprPointMK;	 // set of k closest points
 
 #endif

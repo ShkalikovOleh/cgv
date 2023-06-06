@@ -53,8 +53,8 @@ enum ANNerr {ANNwarn = 0, ANNabort = 1};
 //	and the algorithm applies its normal termination condition.
 //----------------------------------------------------------------------
 
-extern int		ANNmaxPtsVisited;	// maximum number of pts visited
-extern int		ANNptsVisited;		// number of pts visited in search
+extern int thread_local ANNmaxPtsVisited; // maximum number of pts visited
+extern int thread_local ANNptsVisited; // number of pts visited in search
 
 //----------------------------------------------------------------------
 //	Global function declarations

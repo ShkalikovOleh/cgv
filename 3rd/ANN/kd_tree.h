@@ -126,7 +126,7 @@ public:
 //		a small memory leak.
 //----------------------------------------------------------------------
 
-extern ANNkd_leaf *KD_TRIVIAL;					// trivial (empty) leaf node
+extern thread_local ANNkd_leaf* KD_TRIVIAL; // trivial (empty) leaf node
 
 //----------------------------------------------------------------------
 //	kd-tree splitting node.

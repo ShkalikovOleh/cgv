@@ -46,8 +46,8 @@
 //	must *never* deallocated (since it may be shared by more than
 //	one tree).
 //----------------------------------------------------------------------
-static int				IDX_TRIVIAL[] = {0};	// trivial point index
-ANNkd_leaf				*KD_TRIVIAL = NULL;		// trivial leaf node
+thread_local static int IDX_TRIVIAL[] = {0}; // trivial point index
+thread_local ANNkd_leaf	*KD_TRIVIAL = NULL;		// trivial leaf node
 
 //----------------------------------------------------------------------
 //	Printing the kd-tree 

@@ -44,23 +44,22 @@ using namespace std;					// make std:: available
 //	Global counters for performance measurement
 //----------------------------------------------------------------------
 
-int				ann_Ndata_pts  = 0;		// number of data points
-int				ann_Nvisit_lfs = 0;		// number of leaf nodes visited
-int				ann_Nvisit_spl = 0;		// number of splitting nodes visited
-int				ann_Nvisit_shr = 0;		// number of shrinking nodes visited
-int				ann_Nvisit_pts = 0;		// visited points for one query
-int				ann_Ncoord_hts = 0;		// coordinate hits for one query
-int				ann_Nfloat_ops = 0;		// floating ops for one query
-ANNsampStat		ann_visit_lfs;			// stats on leaf nodes visits
-ANNsampStat		ann_visit_spl;			// stats on splitting nodes visits
-ANNsampStat		ann_visit_shr;			// stats on shrinking nodes visits
-ANNsampStat		ann_visit_nds;			// stats on total nodes visits
-ANNsampStat		ann_visit_pts;			// stats on points visited
-ANNsampStat		ann_coord_hts;			// stats on coordinate hits
-ANNsampStat		ann_float_ops;			// stats on floating ops
-//
-ANNsampStat		ann_average_err;		// average error
-ANNsampStat		ann_rank_err;			// rank error
+thread_local int ann_Ndata_pts = 0;		// number of data points
+thread_local int ann_Nvisit_lfs = 0;		// number of leaf nodes visited
+thread_local int ann_Nvisit_spl = 0;		// number of splitting nodes visited
+thread_local int ann_Nvisit_shr = 0;			// number of shrinking nodes visited
+thread_local int ann_Nvisit_pts = 0;			// visited points for one query
+thread_local int ann_Ncoord_hts = 0;				// coordinate hits for one query
+thread_local int ann_Nfloat_ops = 0;			// floating ops for one query
+thread_local ANNsampStat ann_visit_lfs;				// stats on leaf nodes visits
+thread_local ANNsampStat ann_visit_spl;			// stats on splitting nodes visits
+thread_local ANNsampStat ann_visit_shr;				// stats on shrinking nodes visits
+thread_local ANNsampStat ann_visit_nds;			// stats on total nodes visits
+thread_local ANNsampStat ann_visit_pts;				// stats on points visited
+thread_local ANNsampStat ann_coord_hts;			// stats on coordinate hits
+thread_local ANNsampStat ann_float_ops;				// stats on floating ops
+ANNsampStat ann_average_err;		// average error
+ANNsampStat ann_rank_err;				// rank error
 
 //----------------------------------------------------------------------
 //	Routines for statistics.

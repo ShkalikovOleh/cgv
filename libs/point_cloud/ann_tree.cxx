@@ -95,8 +95,8 @@ void ann_tree::build(const point_cloud& _pc, const std::vector<Idx>& component_i
 
 void ann_tree::extract_neighbors(Idx i, Idx k, std::vector<Idx>& N) const
 {
-	static std::vector<float> dists;
-	static std::vector<Idx> tmp;
+	thread_local static std::vector<float> dists;
+	thread_local static std::vector<Idx> tmp;
 	ann_struct* ann = static_cast<ann_struct*>(ann_impl);
 	if (!ann) {
 		std::cerr << "no ann_tree built" << std::endl;

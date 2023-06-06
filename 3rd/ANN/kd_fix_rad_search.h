@@ -39,6 +39,6 @@
 //		procedures.
 //----------------------------------------------------------------------
 
-extern ANNpoint			ANNkdFRQ;			// query point (static copy)
+extern thread_local ANNpoint			ANNkdFRQ;			// query point (static copy)
 
 #endif

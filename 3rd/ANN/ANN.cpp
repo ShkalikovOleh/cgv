@@ -184,8 +184,8 @@ void annError(char *msg, ANNerr level)
 //		on the running time of the algorithm.
 //----------------------------------------------------------------------
 
-int	ANNmaxPtsVisited = 0;	// maximum number of pts visited
-int	ANNptsVisited;			// number of pts visited in search
+thread_local int ANNmaxPtsVisited = 0; // maximum number of pts visited
+thread_local int ANNptsVisited; // number of pts visited in search
 
 //----------------------------------------------------------------------
 //	Global function declarations
